@@ -1,0 +1,22 @@
+import numpy as np
+import pandas as pd
+
+# Load data from file
+data = pd.read_csv("D:\Python\load data\simplelinearregression.csv")
+
+# Display the original data
+print("Original Data:")
+print(data.to_string())
+
+# Create a copy of the data
+data_min_max_scaled = data.copy()
+
+# Normalize the data using Min-Max scaling
+for column in data_min_max_scaled.columns:
+    min_value = data_min_max_scaled[column].min()
+    max_value = data_min_max_scaled[column].max()
+    data_min_max_scaled[column] = (data_min_max_scaled[column] - min_value) / (max_value - min_value)
+
+# Display the normalized data
+print("\nNormalized Data:")
+print(data_min_max_scaled.to_string())

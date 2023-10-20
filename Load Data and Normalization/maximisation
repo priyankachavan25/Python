@@ -1,0 +1,22 @@
+import numpy as np
+import pandas as pd
+from sklearn import datasets
+
+# Loading data from file
+data = pd.read_csv("D:\Python\load data\simplelinearregression.csv")
+
+# Displaying the original data
+print("Original Data:")
+print(data.to_string())
+
+# Maximum Absolute Scaling (Normalization)
+data_max_scaled = data.copy()
+
+for column in data_max_scaled.columns:
+    max_abs_value = data_max_scaled[column].abs().max()
+    if max_abs_value != 0:
+        data_max_scaled[column] = data_max_scaled[column] / max_abs_value
+
+# Displaying the normalized data
+print("\nNormalized Data:")
+print(data_max_scaled.to_string())
